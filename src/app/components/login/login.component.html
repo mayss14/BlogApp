@@ -1,46 +1,72 @@
-<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-  <p-card header="Login" [style]="{ width: '360px' }">
-    <div class="field">
-      <label for="email">Email</label>
-      <input
-        type="text"
-        pInputText
-        formControlName="email"
-        class="w-full"
-        name="email"
-        placeholder="Type your email"
-      />
-      <small
-        *ngIf="email.invalid && (email.dirty || email.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="email.errors?.['required']">Email is required.</div>
-        <div *ngIf="email.errors?.['email']">Email should be valid</div>
-      </small>
+<header>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="../assets/subtract.png" width="180" height="50" class="m-2 p-2" alt="">
+    </a>
+  </nav>  
+</header>
+
+<div class="container-fluid d-flex justify-content-center login-form p-5">
+  <div class="title">
+    <p class="fs-1 fw-bold ">  Welcome to <br> X-Large </p>
+      <p class="fs-3 fw-light">  The best place to share your Tech <br> thoughts and projects with the world </p>
+  </div>
+
+  <div>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <p-card header="Login" [style]="{'width' : '450px' , 'margin-right': '20px'}">
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            pInputText
+            formControlName="email"
+            class="w-full"
+            name="email"
+            placeholder="Type your email"
+          />
+          <small
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="email.errors?.['required']">Email is required.</div>
+            <div *ngIf="email.errors?.['email']">Email should be valid</div>
+          </small>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            pInputText
+            formControlName="password"
+            class="w-full"
+            name="password"
+            placeholder="Type your password"
+          />
+          <small
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="password.errors?.['required']">Password is required.</div>
+          </small>
+        </div>
+        <p-button
+          label="SIGN IN"
+          styleClass="w-full"
+          [disabled]="loginForm.invalid"
+          severity="secondary"
+          type="submit"
+        ></p-button>
+        <div class="mt-2">Not a member? <a routerLink="/register" class="text-secondary text-decoration-none fw-bold">Register</a></div>
+      </p-card>
+    </form>
+  </div>
+        
+    
+
+</div>
+<footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 X-Large</p>
     </div>
-    <div class="field">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        pInputText
-        formControlName="password"
-        class="w-full"
-        name="password"
-        placeholder="Type your password"
-      />
-      <small
-        *ngIf="password.invalid && (password.dirty || password.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="password.errors?.['required']">Password is required.</div>
-      </small>
-    </div>
-    <p-button
-      label="SIGN IN"
-      styleClass="w-full"
-      [disabled]="loginForm.invalid"
-      type="submit"
-    ></p-button>
-    <div class="mt-2">Not a member? <a routerLink="/register">Register</a></div>
-  </p-card>
-</form>
+</footer>

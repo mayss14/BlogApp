@@ -1,0 +1,17 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.login-form {
+  background-image: url('/assets/blog.jpg');  
+  /* Set background size to cover the entire container */
+  background-size: cover;
+  /* Set background repeat to no-repeat */
+  background-repeat: no-repeat;
+  margin-bottom: 50px;
+}
+
+.title
+{
+   color: #fff;
+   margin-top: 150px;
+   margin-right: 50px ;
+}

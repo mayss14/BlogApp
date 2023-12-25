@@ -5,34 +5,46 @@ import { MessageService } from 'primeng/api';
 import { User } from 'src/app/interfaces/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { passwordMatchValidator } from 'src/app/shared/password-match.directive';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-
-  registerForm = this.fb.group({
-    fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
-    confirmPassword: ['', Validators.required]
-  }, {
-    validators: passwordMatchValidator
-  })
+  registerForm = this.fb.group(
+    {
+      fname: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)],
+      ],
+      lname: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)],
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    },
+    {
+      validators: passwordMatchValidator,
+    }
+  );
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private messageService: MessageService,
     private router: Router
-  ) { }
+  ) {}
 
-  get fullName() {
-    return this.registerForm.controls['fullName'];
+  get fname() {
+    return this.registerForm.controls['fname'];
   }
-
+  get lname() {
+    return this.registerForm.controls['lname'];
+  }
   get email() {
     return this.registerForm.controls['email'];
   }
@@ -49,15 +61,22 @@ export class RegisterComponent {
     const postData = { ...this.registerForm.value };
     delete postData.confirmPassword;
     this.authService.registerUser(postData as User).subscribe(
-      response => {
+      (response) => {
         console.log(response);
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Register successfully' });
-        this.router.navigate(['login'])
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Register successfully',
+        });
+        this.router.navigate(['login']);
       },
-      error => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+      (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Something went wrong',
+        });
       }
-    )
+    );
   }
-
 }
