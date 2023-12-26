@@ -16,7 +16,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
       <p-card header="Login" [style]="{'width' : '450px' , 'margin-right': '20px'}">
         <div class="field">
-          <label for="email">Email</label>
+          <label for="username">Username</label>
           <input
             type="text"
             pInputText
@@ -26,11 +26,11 @@
             placeholder="Type your email"
           />
           <small
-            *ngIf="email.invalid && (email.dirty || email.touched)"
+            *ngIf="username.invalid && (username.dirty || username.touched)"
             class="block p-error"
           >
-            <div *ngIf="email.errors?.['required']">Email is required.</div>
-            <div *ngIf="email.errors?.['email']">Email should be valid</div>
+            <div *ngIf="username.errors?.['required']">username is required.</div>
+           
           </small>
         </div>
         <div class="field">

@@ -12,7 +12,10 @@ import { MenubarModule } from 'primeng/menubar';
 })
 export class LoginComponent {
   loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    username: [
+      '',
+      [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)],
+    ],
     password: ['', Validators.required],
   });
 
@@ -23,25 +26,25 @@ export class LoginComponent {
     private msgService: MessageService
   ) {}
 
-  get email() {
-    return this.loginForm.controls['email'];
+  get username() {
+    return this.loginForm.controls['username'];
   }
   get password() {
     return this.loginForm.controls['password'];
   }
 
   loginUser() {
-    const { email, password } = this.loginForm.value;
-    this.authService.getUserByEmail(email as string).subscribe(
+    const { username, password } = this.loginForm.value;
+    this.authService.getUserByUname(username as string).subscribe(
       (response) => {
         if (response.length > 0 && response[0].password === password) {
-          sessionStorage.setItem('email', email as string);
+          sessionStorage.setItem('username', username as string);
           this.router.navigate(['/home']);
         } else {
           this.msgService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'email or password is wrong',
+            detail: 'username  or password is wrong',
           });
         }
       },

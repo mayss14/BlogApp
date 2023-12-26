@@ -1,2 +1,183 @@
-<p>home works!</p>
-<p-button label="Sign out" (onClick)="logOut()"></p-button>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center d-flex">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/subtract.png" width="200" height="70" class="p-3"
+                    [style]="{'margin-right' : '290px'}" alt=>
+            </a>
+
+
+            <form class="form-inline d-flex justify-content-center px-8">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                    </div>
+                    <input class="form-control mr-sm-2 " type="search" placeholder="Search a topic" aria-label="Search">
+                </div>
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </form>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" routerLink="/home">Home <i class="bi bi-house"> </i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/profile">Profile <i class="bi bi-person"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="/writing">Write a Post <i class="bi bi-pencil"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid d-flex justify-content-center pb-5" style="background-color: rgba(10, 9, 9, 0.05);">
+        <div class="mt-6 px-4">
+            <p class="fs-1 fw-light"> Welcome to X-Large </p>
+            <p class="fs-3 fw-lighter">Let's X-Talk </p>
+            <p class="fs-5 fw-lighter"> X-Large is a large Publishing Plateform <br> where you can share and discover
+                all <br> IT news and updates .</p>
+            <button class="btn btn-outline-secondary"> Let's Dive in <i class="bi bi-arrow-bar-down"></i></button>
+        </div>
+         <img src="/assets/hero.png" width="450px" class="img-fluid mt-2 ml-7">
+    </div>
+
+    <div class="container-fluid section">
+        <p class="fs-2 p-3 fw-light text-center "> Discover Most Relevant Topics </p>
+        <div class="container d-flex justify-content-center p-3">
+            <div class="card w-30rem mx-3">
+
+                <div class="card-body">
+                    <h5 class="card-title">Angular New Version</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+            <div class="card  w-30rem mx-3">
+                <div class="card-body">
+                    <h5 class="card-title">Discover Vanilla JavaScript</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+            <div class="card  w-30rem">
+                <div class="card-body">
+                    <h5 class="card-title">Whats is NodeJS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container d-flex justify-content-center p-3">
+            <div class="card w-30rem mx-3">
+
+                <div class="card-body">
+                    <h5 class="card-title">Spring boot</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+            <div class="card  w-30rem mx-3">
+                <div class="card-body">
+                    <h5 class="card-title">React JS</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+            <div class="card  w-30rem">
+                <div class="card-body">
+                    <h5 class="card-title">Flutter Vs React Native</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container d-flex justify-content-center p-3">
+            <div class="card w-30rem mx-3">
+
+                <div class="card-body">
+                    <h5 class="card-title">Java 8 features</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+            <div class="card  w-30rem mx-3">
+                <div class="card-body">
+                    <h5 class="card-title">Machine learning Algorithms</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+            <div class="card  w-30rem">
+                <div class="card-body">
+                    <h5 class="card-title">AI Generative</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                            class="bi bi-arrow-bar-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="text-center bg-body-tertiary">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-facebook"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-twitter-x"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024
+            <a class="text-body" href="#">X-Large.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+</body>

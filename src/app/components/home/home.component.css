@@ -1,0 +1,10 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.section
+{
+    background-image: url('/assets/blog2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    
+}

@@ -17,35 +17,88 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" routerLink="/writing-page">Write a Post <i
-                                class="bi bi-pencil"></i></a>
+                        <a class="nav-link active" routerLink="/writing">Write a Post <i class="bi bi-pencil"></i></a>
                     </li>
                 </ul>
 
             </div>
         </nav>
-
     </header>
-    <div class="container">
-        <p class="text-center fs-2 fw-light"> Create a new Post</p>
-        <p class="text-center fs-4 fw-lighter"> Let the world hear your thoughts !</p>
+    <div class="container-fluid d-flex justify-content-center" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="mr-8 mt-8">
+            <p class="fs-1 fw-light"> Create a new Post</p>
+            <p class="fs-3 fw-lighter"> Let the world hear your thoughts !</p>
+        </div>
+        <div class="mt-2">
+            <img src="../assets/write.png" width="400px" class="rounded-circle">
+        </div>
     </div>
     <div class="container">
-        <div class="container">
-          <hr>
-          <form [formGroup]="writingForm" (ngSubmit)="submitDetails()">
-            <div class="form-group">
-              <label class="post-title">Title</label>
-              <input type="text" [formControlName]="'title'" class="form-control" placeholder="Title">
-            </div>
-            <div class="form-group">
-              <label class="post-content">Body</label>
-              <editor [formControlName]="'body'"> </editor>
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary">Post</button>
-            </div>
-          </form >
+        <div class="container p-4">
+            <hr>
+            <form [formGroup]="writingForm" (ngSubmit)="submitDetails()">
+                <div class="form-group">
+                    <label class="post-title fw-light fs-3 m-1">Title</label>
+                    <input type="text" [formControlName]="'title'" class="form-control" placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <label class="post-content fw-light fs-3 m-1">Body</label>
+                    <editor [init]="{
+                        height: 300,
+                        plugins: [
+                          'advlist autolink lists link image charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic backcolor | \
+                          alignleft aligncenter alignright alignjustify | \
+                          bullist numlist outdent indent | removeformat | help'}"
+                        apiKey="1kxyppa2syd2me4ky0my2rjqjynx3uudb2r6k7bju86iiaka" [formControlName]="'body'"> </editor>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-secondary m-3">Share your Thoughts </button>
+                </div>
+            </form>
         </div>
-      </div>
+    </div>
+
+    <footer class="text-center bg-body-tertiary">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-facebook"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-twitter-x"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button"><i
+                        class="bi bi-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024
+            <a class="text-body" href="#">X-Large.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
 </body>

@@ -15,13 +15,18 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
+import { ProfileComponent } from './components/profile/profile.component';
+import { WritingPageComponent } from './components/writing-page/writing-page.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
+    HomeComponent,
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
+    ProfileComponent,
+    WritingPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +38,7 @@ import { MenubarModule } from 'primeng/menubar';
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
+    EditorModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],
