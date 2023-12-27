@@ -1,20 +1,14 @@
-<header>
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="../assets/subtract.png" width="180" height="50" class="m-2 p-2" alt="">
-    </a>
-  </nav>  
-</header>
 
-<div class="container-fluid d-flex justify-content-center login-form p-5">
+
+<div class="container-fluid d-flex justify-content-center login-form p-5 ">
   <div class="title">
-    <p class="fs-1 fw-bold ">  Welcome to <br> X-Large </p>
-      <p class="fs-3 fw-light">  The best place to share your Tech <br> thoughts and projects with the world </p>
+    <p class="fs-1 fw-bold text-dark ">  Welcome to X-Large </p>
+      <p class="fs-3 fw-light text-dark">  The best place to share your Tech <br> thoughts and projects with the world </p>
   </div>
 
   <div>
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-      <p-card header="Login" [style]="{'width' : '450px' , 'margin-right': '20px'}">
+      <p-card header="Login" [style]="{'width' : '450px' , 'margin-right': '20px' ,'margin-top': '60px' }">
         <div class="field">
           <label for="username">Username</label>
           <input
@@ -65,8 +59,3 @@
     
 
 </div>
-<footer class="footer">
-    <div class="container">
-      <p>&copy; 2023 X-Large</p>
-    </div>
-</footer>

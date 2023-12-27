@@ -10,13 +10,20 @@ import { WritingPageComponent } from './components/writing-page/writing-page.com
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: LoginComponent,
   },
-
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
   {
     path: 'home',
     component: HomeComponent,
-    //canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'profile',
