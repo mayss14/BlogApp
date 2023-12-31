@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { authGuard } from './guards/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { WritingPageComponent } from './components/writing-page/writing-page.component';
+import { ArticleComponent } from './components/article/article.component';
 
 const routes: Routes = [
   {
@@ -28,10 +29,17 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'writing',
     component: WritingPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'article',
+    component: ArticleComponent,
+    canActivate: [authGuard],
   },
 ];
 

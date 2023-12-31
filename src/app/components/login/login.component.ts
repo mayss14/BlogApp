@@ -35,9 +35,11 @@ export class LoginComponent {
 
   loginUser() {
     const { username, password } = this.loginForm.value;
-    this.authService.getUserByUname(username as string).subscribe(
+
+    this.authService.login(username as string, password as string).subscribe(
       (response) => {
-        if (response.length > 0 && response[0].password === password) {
+        console.log(response);
+        if (response) {
           sessionStorage.setItem('username', username as string);
           this.router.navigate(['/home']);
         } else {
@@ -56,5 +58,28 @@ export class LoginComponent {
         });
       }
     );
+
+    /* this.authService.getUserByUname(username as string).subscribe(
+      (response) => {
+        console.log(response);
+        if (response) {
+          sessionStorage.setItem('username', username as string);
+          this.router.navigate(['/home']);
+        } else {
+          this.msgService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'username  or password is wrong',
+          });
+        }
+      },
+      (error) => {
+        this.msgService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Something went wrong',
+        });
+      }
+    );*/
   }
 }

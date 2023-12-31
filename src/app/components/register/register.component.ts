@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { User } from 'src/app/interfaces/auth';
+import { User } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { passwordMatchValidator } from 'src/app/shared/password-match.directive';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
@@ -15,11 +15,12 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 export class RegisterComponent {
   registerForm = this.fb.group(
     {
-      fname: [
+      username: ['', [Validators.required]],
+      prenom: [
         '',
         [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)],
       ],
-      lname: [
+      nom: [
         '',
         [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)],
       ],
@@ -39,11 +40,14 @@ export class RegisterComponent {
     private router: Router
   ) {}
 
-  get fname() {
-    return this.registerForm.controls['fname'];
+  get username() {
+    return this.registerForm.controls['username'];
   }
-  get lname() {
-    return this.registerForm.controls['lname'];
+  get prenom() {
+    return this.registerForm.controls['prenom'];
+  }
+  get nom() {
+    return this.registerForm.controls['nom'];
   }
   get email() {
     return this.registerForm.controls['email'];
@@ -68,7 +72,7 @@ export class RegisterComponent {
           summary: 'Success',
           detail: 'Register successfully',
         });
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
       },
       (error) => {
         this.messageService.add({

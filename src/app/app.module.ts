@@ -17,7 +17,9 @@ import { MessageService } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { ProfileComponent } from './components/profile/profile.component';
 import { WritingPageComponent } from './components/writing-page/writing-page.component';
-import { EditorModule } from '@tinymce/tinymce-angular';
+import { EditorModule } from 'primeng/editor';
+import { DropdownModule } from 'primeng/dropdown';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     RegisterComponent,
     ProfileComponent,
     WritingPageComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     ToastModule,
     BrowserAnimationsModule,
     EditorModule,
+    DropdownModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

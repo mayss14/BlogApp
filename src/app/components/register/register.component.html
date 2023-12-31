@@ -5,40 +5,58 @@
       <form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
         <p-card header="Register" [style]="{ width: '650px', margin :'25px'}">
           <div class="field">
-            <label for="fname">First Name</label>
+            <label for="fname">UserName</label>
             <input
               type="text"
               pInputText
-              formControlName="fname"
+              formControlName="username"
               class="w-full"
-              name="fname"
+              name="username"
+              placeholder="Type your Username"
+            />
+            <small
+              *ngIf="username.invalid && (username.dirty || username.touched)"
+              class="block p-error"
+            >
+              <div *ngIf="username.errors?.['required']">username is required.</div>
+            
+            </small>
+          </div>
+          <div class="field">
+            <label for="prenom">First Name</label>
+            <input
+              type="text"
+              pInputText
+              formControlName="prenom"
+              class="w-full"
+              name="prenom"
               placeholder="Type your First name"
             />
             <small
-              *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+              *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
               class="block p-error"
             >
-              <div *ngIf="fname.errors?.['required']">First Name is required.</div>
-              <div *ngIf="fname.errors?.['pattern']">Enter a valid First Name</div>
+              <div *ngIf="prenom.errors?.['required']">First Name is required.</div>
+              
             </small>
           </div>
           <!-------------------------------->
           <div class="field">
-            <label for="lname">Last Name</label>
+            <label for="nom">Last Name</label>
             <input
               type="text"
               pInputText
-              formControlName="lname"
+              formControlName="nom"
               class="w-full"
-              name="lname"
+              name="nom"
               placeholder="Type your Last name"
             />
             <small
-              *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+              *ngIf="nom.invalid && (nom.dirty || nom.touched)"
               class="block p-error"
             >
-              <div *ngIf="lname.errors?.['required']">Last Name is required.</div>
-              <div *ngIf="lname.errors?.['pattern']">Enter a valid Last Name</div>
+              <div *ngIf="nom.errors?.['required']">Last Name is required.</div>
+             
             </small>
           </div>
           <!-------------------------------------------->

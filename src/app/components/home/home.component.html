@@ -7,7 +7,7 @@
                     [style]="{'margin-right' : '290px'}" alt=>
             </a>
 
-
+            <!--
             <form class="form-inline d-flex justify-content-center px-8">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -16,7 +16,7 @@
                     <input class="form-control mr-sm-2 " type="search" placeholder="Search a topic" aria-label="Search">
                 </div>
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </form>
+            </form>-->
 
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,105 +43,27 @@
             <p class="fs-3 fw-lighter">Let's X-Talk </p>
             <p class="fs-5 fw-lighter"> X-Large is a large Publishing Plateform <br> where you can share and discover
                 all <br> IT news and updates .</p>
-            <button class="btn btn-outline-secondary"> Let's Dive in <i class="bi bi-arrow-bar-down"></i></button>
+            <button class="btn btn-outline-secondary disabled"> Let's Dive in <i class="bi bi-arrow-bar-down"></i></button>
         </div>
-         <img src="/assets/hero.png" width="450px" class="img-fluid mt-2 ml-7">
+        <img src="/assets/hero.png" width="450px" class="img-fluid mt-2 ml-7">
     </div>
 
     <div class="container-fluid section">
         <p class="fs-2 p-3 fw-light text-center "> Discover Most Relevant Topics </p>
-        <div class="container d-flex justify-content-center p-3">
-            <div class="card w-30rem mx-3">
-
+        <div class="cardComp">
+            <div class="card" *ngFor="let a of articles">
                 <div class="card-body">
-                    <h5 class="card-title">Angular New Version</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
+                    <p class="card-title text-center fs-5 fw-bold uppercase">{{a.titre}}</p>
+                    <p class="fs-4 fw-light"><span class="badge bg-secondary">{{a.categorie.nom}}</span></p>
+    
+                    <button (click)="showDetails(a.id)" type="button" class="btn btn-outline-secondary fw-light">Read full Article <i
                             class="bi bi-arrow-bar-right"></i></button>
                 </div>
-            </div>
-            <div class="card  w-30rem mx-3">
-                <div class="card-body">
-                    <h5 class="card-title">Discover Vanilla JavaScript</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
-            </div>
-            <div class="card  w-30rem">
-                <div class="card-body">
-                    <h5 class="card-title">Whats is NodeJS</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
+                <br>
             </div>
         </div>
-        <div class="container d-flex justify-content-center p-3">
-            <div class="card w-30rem mx-3">
-
-                <div class="card-body">
-                    <h5 class="card-title">Spring boot</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
-            </div>
-            <div class="card  w-30rem mx-3">
-                <div class="card-body">
-                    <h5 class="card-title">React JS</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
-            </div>
-            <div class="card  w-30rem">
-                <div class="card-body">
-                    <h5 class="card-title">Flutter Vs React Native</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="container d-flex justify-content-center p-3">
-            <div class="card w-30rem mx-3">
-
-                <div class="card-body">
-                    <h5 class="card-title">Java 8 features</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
-            </div>
-            <div class="card  w-30rem mx-3">
-                <div class="card-body">
-                    <h5 class="card-title">Machine learning Algorithms</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
-            </div>
-            <div class="card  w-30rem">
-                <div class="card-body">
-                    <h5 class="card-title">AI Generative</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button type="button" class="btn btn-outline-secondary">Read full <i
-                            class="bi bi-arrow-bar-right"></i></button>
-                </div>
-            </div>
-        </div>
-
     </div>
+
     <footer class="text-center bg-body-tertiary">
         <!-- Grid container -->
         <div class="container pt-4">
