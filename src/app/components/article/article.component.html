@@ -6,7 +6,6 @@
                 <img src="../assets/subtract.png" width="200" height="70" class="p-3"
                     [style]="{'margin-right' : '290px'}" alt=>
             </a>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
@@ -19,24 +18,114 @@
                     <li class="nav-item">
                         <a class="nav-link " routerLink="/writing">Write a Post <i class="bi bi-pencil"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="/">Log out <i class="bi bi-door-closed"></i></a>
+                    </li>
                 </ul>
-
             </div>
         </nav>
-
     </header>
-    <div class="m-1 p1">
-        <p class="text-center fs-3 fw-light"> In this Article we will talk about: </p>
-        <p class="text-center fs-3 fw-bold uppercase"> {{title}} </p>
-    </div>
-    <div class="container ml-8 mr-8 p-3">
-        <div class="d-flex justify-content-center mt-3 border-2 p-3">
-            <div [innerHTML]="body" class="fs-5 fw-light text-justify"></div>
+    <!--Comment section ------------>
+    <section id="home">
+        <div class="container my-1 py-5">
+            <div class="row d-flex justify-content-center ml-8 mr-8">
+                <div class="col-md-12 col-lg-10 col-xl-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-start align-items-center">
+                                <img class="rounded-circle shadow-1-strong me-3" src="../assets/prfl.png" alt="avatar"
+                                    width="60" height="60" />
+                                <div>
+                                    <h6 class="fw-bold text-primary mb-1">{{username}}</h6>
+                                    <p class="text-muted small mb-0">
+                                        Shared publicly - Jan 2024
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="">
+                                <p class="text-center fs-3 fw-light"> In this Article we will talk about: </p>
+                                <p class="text-center fs-3 fw-bold uppercase"> {{title}} </p>
+                            </div>
+                            <div class="">
+                                <div class="d-flex justify-content-center mt-3  p-4">
+                                    <div [innerHTML]="body" class="fs-5 fw-light text-justify"></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="small d-flex justify-content-start ml-4">
+                                <button class="mb-0 btn btn-outline-primary mr-2" (click)="addClaps()">
+                                    <i class="fa-solid fa-hands-clapping me-2"></i> </button>
+                                <a class="d-flex align-items-center me-3 text-decoration-none">
+                                    <p class="mb-0 fs-5"><span>{{claps}}</span> Claps </p>
+                                </a>
+                                <a href="#!" class="d-flex align-items-center me-3 text-decoration-none">
+                                    <p class="mb-0 fs-5"><span>{{comments.length}}</span> Comments </p>
+                             
+                                    <i class="bi bi-chat-dots me-2 ml-2"></i>
+                                      </a>
+                            </div>
+                            <div class="container ">
+                                <div class="row d-flex justify-content-center mt-3">
+                                    <div class="col-md-12 col-lg-10">
+                                        <div class="card text-dark">
+                                            <div class="card-body p-4" *ngFor="let c of comments">
+
+                                                <div class="d-flex flex-start">
+                                                    <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="../assets/prfl.png"  alt="avatar" width="60" height="60" />
+                                                    <div>
+                                                        <h6 class="fw-bold mb-1">{{c.auteur.username}}</h6>
+                                                    
+                                                        <p class="mb-0">
+                                                            {{c.contenu}}
+                                                        </p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-end">
+                                                        <button class="btn btn-outline-danger ml-2"  (click)="deleteComment(c.id)"><i class="bi bi-trash"></i></button>
+                                                        <button class="btn btn-outline-info ml-2"  (click)="showDialog(c)" ><i class="bi bi-pen"></i></button>
+                                                        <p-dialog header="Update Comment" [(visible)]="visible1" [style]="{width: '50vw'}">
+                        
+                                                            <form [formGroup]="updateCom" (ngSubmit)="updateComment(c)">
+                                                                <div class="form-group">
+                                                              <input type="text" [formControlName]="'com'" class="form-control" placeholder={{c.contenu}} >
+                                                                </div>
+                                                                <div class="form-group text-center">
+                                                                    <button type="submit" class="btn btn-secondary m-3" >Update Comment</button>
+                                                                </div>
+                                                           </form>
+                                                       </p-dialog>
+                                                  </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer py-4 my-3 border-0" style="background-color: #f8f9fa;">
+                            <div class="d-flex flex-start w-100">
+                                <img class="rounded-circle shadow-1-strong me-3" src="../assets/prfl.png" alt="avatar"
+                                    width="40" height="40" />
+                                <div class="form-outline w-100">
+                                    <label class="form-label" for="textAreaExample">Post a Comment</label>
+                                    <textarea class="form-control" id="textAreaExample" rows="2" [(ngModel)]="comment"
+                                        style="background: #fff; resize : none;"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="float-end mt-2 pt-1">
+                                <button type="button" class="btn btn-primary btn-sm mr-2" (click)="onSubmit()">Post
+                                    comment</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="container mb-8">
-        <p class="fs-3 fw-lighter float-end p-2"> Written by :  {{username}}</p>
-    </div>
+    </section>
     <footer class="text-center bg-body-tertiary">
         <!-- Grid container -->
         <div class="container pt-4">

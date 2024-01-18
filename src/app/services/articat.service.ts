@@ -16,6 +16,14 @@ export class ArticatService {
     return this.http.post(`${this.baseUrl}/articles`, ArticleDetails);
   }
 
+  updateArticle(ArticleDetails: Article): Observable<any> {
+    return this.http.put<Article>(`${this.baseUrl}/articles`, ArticleDetails);
+  }
+
+  getArticleById(id: number): Observable<Article> {
+    return this.http.get<Article>(`${this.baseUrl}/articles/${id}`);
+  }
+
   getCategories(): Observable<Categorie[]> {
     return this.http.get<Categorie[]>(`${this.baseUrl}/categories`);
   }
@@ -32,5 +40,9 @@ export class ArticatService {
 
   getArticlesByUser(id: number): Observable<Article[]> {
     return this.http.get<Article[]>(`${this.baseUrl}/articles/written/${id}`);
+  }
+
+  deleteArticle(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/articles/${id}`);
   }
 }

@@ -40,6 +40,23 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  deleteArticle(id: any) {
+    this.artiser.deleteArticle(id).subscribe((response) => {
+      location.reload();
+      if (response) {
+        console.log(response);
+        this.loadArticlesUser();
+      } else {
+        console.log('error');
+      }
+    });
+  }
+  updateArticle(id: any) {
+    this.route.navigateByUrl('/writing', {
+      state: { id: id },
+    });
+  }
+
   showDetails(ID: number | any) {
     this.route.navigateByUrl('/article', { state: { id: ID } });
   }

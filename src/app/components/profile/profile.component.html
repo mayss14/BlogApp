@@ -19,6 +19,9 @@
                     <li class="nav-item">
                         <a class="nav-link " routerLink="/writing">Write a Post <i class="bi bi-pencil"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="/">Log out <i class="bi bi-door-closed"></i></a>
+                    </li>
                 </ul>
 
             </div>
@@ -27,9 +30,9 @@
     </header>
     <div class="container d-flex justify-content-center p-5">
         <div class="mr-8">
-            <p class="fs-1 fw-light mt-4 uppercase"> 
-                Hi I'm   {{username}} 
-             </p>
+            <p class="fs-1 fw-light mt-4 uppercase">
+                Hi I'm {{username}}
+            </p>
             <p class="fs-3 fw-lighter">Welcome to my Profile </p>
             <p class="fs-5 fw-lighter"> I'm a Software Engineer and a Web Developer, <br>
                 I'm passionate about developing web applications and learning new technologies .</p>
@@ -47,10 +50,17 @@
                 <div class="card-body">
                     <p class="card-title text-center fs-5 fw-bold uppercase">{{a.titre}}</p>
                     <p class="fs-4 fw-light"><span class="badge bg-secondary">{{a.categorie.nom}}</span></p>
-    
-                    <button (click)="showDetails(a.id)" type="button" class="btn btn-outline-secondary fw-light">Read full Article <i
-                            class="bi bi-arrow-bar-right"></i></button>
+
+                    <button (click)="showDetails(a.id)" type="button" class="btn btn-outline-secondary fw-light">Read
+                        full Article <i class="bi bi-arrow-bar-right"></i></button>
                 </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="button" class="btn btn-info mr-1 " (click)="updateArticle(a.id)">Update</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteArticle(a.id)">
+                        Delete
+                    </button>
+                </div>
+
                 <br>
             </div>
         </div>

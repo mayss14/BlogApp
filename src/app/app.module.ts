@@ -20,6 +20,8 @@ import { WritingPageComponent } from './components/writing-page/writing-page.com
 import { EditorModule } from 'primeng/editor';
 import { DropdownModule } from 'primeng/dropdown';
 import { ArticleComponent } from './components/article/article.component';
+import { MessagesModule } from 'primeng/messages';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,9 @@ import { ArticleComponent } from './components/article/article.component';
     BrowserAnimationsModule,
     EditorModule,
     DropdownModule,
+    MessagesModule,
+    FormsModule,
+    DialogModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

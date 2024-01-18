@@ -1,10 +1,12 @@
 
 
 <div class="container-fluid d-flex justify-content-center login-form p-5 ">
+  
   <div class="title">
     <p class="fs-1 fw-bold text-dark ">  Welcome to X-Large </p>
       <p class="fs-3 fw-light text-dark">  The best place to share your Tech <br> thoughts and projects with the world </p>
   </div>
+  
 
   <div>
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
@@ -52,10 +54,13 @@
           type="submit"
         ></p-button>
         <div class="mt-2">Not a member? <a routerLink="/register" class="text-secondary text-decoration-none fw-bold">Register</a></div>
+         
       </p-card>
+       <div *ngIf="!login" class="text-center">
+        <p-messages  [(value)]="message" [enableService]="false"></p-messages>
+ 
+       </div>
     </form>
-  </div>
-        
-    
+  </div>   
 
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
@@ -14,17 +14,19 @@ import { Article } from 'src/app/models/article';
   styleUrls: ['./writing-page.component.css'],
 })
 export class WritingPageComponent implements OnInit {
+  route: Router;
   writingForm: FormGroup;
   titre = new FormControl<string>('');
   contenu = new FormControl<string>('');
   categorie = new FormControl<Categorie | null>(null);
   article: Article;
   current_user!: number;
-
+  id: number = 0;
+  isUpdate: boolean = true;
   list_cat!: Categorie[];
 
   constructor(
-    private router: Router,
+    @Inject(Router) route: Router,
     private artiser: ArticatService,
     private auth: AuthService
   ) {
@@ -33,7 +35,17 @@ export class WritingPageComponent implements OnInit {
       contenu: this.contenu,
       categorie: this.categorie,
     });
-    this.article = new Article(null, '', '', 0, new Categorie(0, '', ''), 5);
+    this.route = route;
+    this.article = new Article(
+      0,
+      '',
+      '',
+      0,
+      new Categorie(0, '', ''),
+      this.current_user
+    );
+    this.titre = this.route.getCurrentNavigation()?.extras.state?.['titre'];
+    this.id = this.route.getCurrentNavigation()?.extras.state?.['id'];
   }
 
   loadCategories() {
@@ -61,8 +73,51 @@ export class WritingPageComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this.getUser();
+    this.loadArticle(this.id);
   }
 
+  loadArticle(id: number) {
+    this.isUpdate = false;
+    if (id != 0) {
+      this.isUpdate = true;
+      this.artiser.getArticleById(id).subscribe((response) => {
+        if (response) {
+          this.writingForm.get('titre')?.setValue(response.titre);
+          this.writingForm.get('contenu')?.setValue(response.contenu);
+          console.log(this.article);
+        } else {
+          console.log('error');
+        }
+      });
+    }
+  }
+  updateArticle() {
+    this.artiser.getArticles().subscribe((response) => {
+      if (response) {
+        response.map((article) => {
+          if (article.id === this.id) {
+            this.article.id = article.id;
+            this.article.titre = this.writingForm.get('titre')?.value;
+            this.article.contenu = this.writingForm.get('contenu')?.value;
+            this.article.categorie = this.writingForm.get('categorie')?.value;
+            this.article.auteur = this.current_user;
+            this.article.claps = article.claps;
+          }
+          this.artiser.updateArticle(this.article).subscribe((response) => {
+            if (response) {
+              this.route.navigateByUrl('/article', {
+                state: {
+                  id: this.article.id,
+                },
+              });
+            }
+          });
+        });
+      } else {
+        console.log('error');
+      }
+    });
+  }
   submitDetails() {
     this.artiser.getArticles().subscribe((response) => {
       if (response) {
@@ -75,24 +130,15 @@ export class WritingPageComponent implements OnInit {
     this.article.contenu = this.writingForm.get('contenu')?.value;
     this.article.categorie = this.writingForm.get('categorie')?.value;
     this.article.auteur = this.current_user;
-    this.article.claps = 6;
+    //this.article.claps = 6;
 
     console.log(this.article.contenu);
     this.artiser.addArticle(this.article).subscribe((response) => {
-      this.router.navigateByUrl('/article', {
+      this.route.navigateByUrl('/article', {
         state: {
           id: this.article.id,
         },
       });
     });
-
-    /*
-    this.router.navigateByUrl('/article', {
-      state: {
-        title: this.title.value,
-        body: this.body.value,
-      },
-    });
-    */
   }
 }

@@ -19,6 +19,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" routerLink="/writing">Write a Post <i class="bi bi-pencil"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="/">Log out <i class="bi bi-door-closed"></i></a>
+                    </li>
                 </ul>
 
             </div>
@@ -55,6 +58,9 @@
                 </div>
                 
             </form>
+            <div class="form-group text-center" >
+                <button type="submit" class="btn btn-secondary m-3" [ngClass]="{'d-none' : !isUpdate}" (click)="updateArticle()">Update Article </button>
+            </div>
         </div>
        
     </div>

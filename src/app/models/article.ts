@@ -7,7 +7,7 @@ export class Article {
   contenu: string;
   claps: number;
   categorie: Categorie;
-  auteur: number | User;
+  auteur: any;
 
   constructor(
     id: number | null,
@@ -15,7 +15,7 @@ export class Article {
     contenu: string,
     claps: number,
     categorie: Categorie,
-    auteur: number | User
+    auteur: any
   ) {
     this.id = id;
     this.titre = titre;

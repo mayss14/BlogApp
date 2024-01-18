@@ -1,5 +1,12 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 #navbarSupportedContent
 {
-    margin-left: 550px;
+    margin-left: 500px;
+}
+
+#home
+{
+    background-image: url('/assets/blog2.jpg');
+    background-repeat: no-repeat;
+    width: 100%;
 }
